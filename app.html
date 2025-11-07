@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To-Do List Web App</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom right, #0a2342, #1e3c58);
+    color: #fff;
+    margin: 0;
+    padding: 20px;
+  }
+
+  h2 {
+    text-align: left;
+    color: #fff;
+  }
+
+  .container {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+  }
+
+  .form-container {
+    background: #fff;
+    color: #000;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  }
+
+  .form-container input,
+  .form-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+  .form-container button {
+    width: 100%;
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .form-container button:hover {
+    background: #218838;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    color: #000;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  th, td {
+    text-align: left;
+    padding: 12px 15px;
+  }
+
+  th {
+    background-color: #0a2342;
+    color: #fff;
+  }
+
+  tr {
+    border-bottom: 1px solid #ddd;
+  }
+
+  tr:last-child {
+    border-bottom: none;
+  }
+
+  .delete-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .delete-btn:hover {
+    background-color: #b02a37;
+  }
+
+  .table-container {
+    flex: 1;
+  }
+</style>
+</head>
+<body>
+
+<h2>To-Do List Web App</h2>
+
+<div class="container">
+  <!-- Left Form -->
+  <div class="form-container">
+    <form id="taskForm">
+      <label>Title</label>
+      <input type="text" id="title" placeholder="Enter title" required>
+      
+      <label>Description</label>
+      <textarea id="description" placeholder="Enter description" required></textarea>
+      
+      <button type="submit">Save</button>
+    </form>
+  </div>
+
+  <!-- Right Table -->
+  <div class="table-container">
+    <table id="todoTable">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Example rows -->
+        <tr>
+          <td>title</td>
+          <td>short description</td>
+          <td><button class="delete-btn" onclick="deleteTask(this)">X</button></td>
+        </tr>
+        <tr>
+          <td>title next</td>
+          <td>next short description</td>
+          <td><button class="delete-btn" onclick="deleteTask(this)">X</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+document.getElementById("taskForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const title = document.getElementById("title").value.trim();
+  const description = document.getElementById("description").value.trim();
+
+  if (!title || !description) {
+    alert("Please fill out both fields.");
+    return;
+  }
+
+  const tableBody = document.querySelector("#todoTable tbody");
+  const newRow = document.createElement("tr");
+
+  const titleCell = document.createElement("td");
+  titleCell.textContent = title;
+
+  const descCell = document.createElement("td");
+  descCell.textContent = description;
+
+  const deleteCell = document.createElement("td");
+  const deleteBtn = document.createElement("button");
+  deleteBtn.textContent = "X";
+  deleteBtn.className = "delete-btn";
+  deleteBtn.onclick = function() { deleteTask(deleteBtn); };
+  deleteCell.appendChild(deleteBtn);
+
+  newRow.appendChild(titleCell);
+  newRow.appendChild(descCell);
+  newRow.appendChild(deleteCell);
+
+  tableBody.appendChild(newRow);
+
+  // Clear form
+  document.getElementById("title").value = "";
+  document.getElementById("description").value = "";
+});
+
+function deleteTask(button) {
+  const row = button.closest("tr");
+  row.remove();
+}
+</script>
+
+</body>
+</html>
+
+

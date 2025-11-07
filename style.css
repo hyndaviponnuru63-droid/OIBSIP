@@ -1,0 +1,72 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+.intro {
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #1565c0;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-style: italic;
+  color: #555;
+}
+
+.profile-img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+.about, .quotes, .achievements {
+  margin-top: 40px;
+}
+
+h2 {
+  color: #0d47a1;
+  border-bottom: 2px solid #bbdefb;
+  padding-bottom: 5px;
+}
+
+blockquote {
+  font-size: 1.3em;
+  color: #1a237e;
+  text-align: center;
+  background: #e8eaf6;
+  border-left: 5px solid #3949ab;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+ul {
+  list-style-type: square;
+  padding-left: 20px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 0.9em;
+  color: #555;
+}
